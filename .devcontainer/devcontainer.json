@@ -2,14 +2,16 @@
   "name": "Build a Webhook Listener",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:18",
   "forwardPorts": [
-    3000
+    3000,
+    1234
   ],
-  "postCreateCommand": "cd learner-project && npm install",
+  "postCreateCommand": "npm install && cd learner-project && npm install && chmod +x scripts/start.sh",
   "customizations": {
     "vscode": {
       "extensions": [
         "astro-build.astro-vscode"
       ]
     }
-  }
+  },
+  "postStartCommand": "./scripts/start.sh"
 }
