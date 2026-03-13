@@ -9,11 +9,19 @@
     },
     "3000": {
       "label": "Learner App",
-      "onAutoForward": "ignore"
+      "onAutoForward": "ignore",
+      "protocol": "http"
+    }
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "server.js"
+      ]
     }
   },
   "postCreateCommand": "npm install && (cd learner-project && npm install) && chmod +x scripts/start.sh",
-  "postStartCommand": "./scripts/start.sh",
+  "postAttachCommand": "gh codespace ports visibility 3000:public -c $CODESPACE_NAME && ./scripts/start.sh",
   "customizations": {
     "vscode": {
       "extensions": [],
@@ -33,5 +41,8 @@
         }
       }
     }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   }
 }
