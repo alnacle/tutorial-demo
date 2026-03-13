@@ -1,0 +1,34 @@
+version: 1
+tutorial:
+  id: webhook-demo
+  title: Build a Webhook Listener
+  description: Learn how to receive incoming webhooks
+content:
+  format: markdown
+  docsDir: src/content/docs
+  indexFile: index.md
+runtime:
+  type: node
+  workingDirectory: learner-project
+  installCommand: npm install
+  startCommand: npm run dev
+application:
+  port: 3000
+  protocol: http
+  host: 0.0.0.0
+ports:
+  - name: app
+    port: 3000
+    protocol: http
+    visibility: public
+    description: Main application endpoint
+devcontainer:
+  enabled: true
+  forwardPorts:
+    - 3000
+  postCreateCommand: cd learner-project && npm install
+steps:
+  naming: numeric-prefix
+  defaultExtension: md
+output:
+  siteDir: dist
