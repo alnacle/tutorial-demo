@@ -1,17 +1,23 @@
 {
   "name": "Build a Webhook Listener",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:18",
-  "forwardPorts": [
-    3000,
-    1234
-  ],
+  "forwardPorts": [3000, 1234],
+  "portsAttributes": {
+    "1234": {
+      "label": "Tutorial",
+      "onAutoForward": "openPreview"
+    },
+    "3000": {
+      "label": "Learner App"
+    }
+  },
   "postCreateCommand": "npm install && (cd learner-project && npm install) && chmod +x scripts/start.sh",
+  "postStartCommand": "./scripts/start.sh",
   "customizations": {
     "vscode": {
       "extensions": [
         "astro-build.astro-vscode"
       ]
     }
-  },
-  "postStartCommand": "./scripts/start.sh"
+  }
 }
