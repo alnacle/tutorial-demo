@@ -35,6 +35,18 @@ echo -e "$BLUE[Learner]$NC Starting node server in learner-project..."
 (cd learner-project && npm run dev 2>&1 | sed "s/^/[Learner] /") &
 LEARNER_PID=$!
 
+# Give the learner app a moment to bind to port 3000
+sleep 3
+
+# Try to make port 3000 public in Codespaces
+if command -v gh >/dev/null 2>&1 && [ -n "${CODESPACE_NAME:-}" ]; then
+  echo -e "${BLUE}[Codespaces]${NC} Making learner app port 3000 public..."
+  gh codespace ports visibility 3000:public -c "$CODESPACE_NAME" >/dev/null 2>&1 || \
+    echo -e "${YELLOW}[Codespaces]${NC} Could not set port 3000 to public automatically."
+else
+  echo -e "${YELLOW}[Codespaces]${NC} gh CLI or CODESPACE_NAME not available; skipping automatic port visibility."
+fi
+
 echo ""
 echo -e "$GREEN✓ Both servers are running$NC"
 echo -e "$GREEN✓ Tutorial available at http://localhost:1234$NC"
