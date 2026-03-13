@@ -22,6 +22,7 @@ export default defineConfig({
     }),
   ],
   server: {
-    port: 4321,
+    port: 1234,
+    host: true, // Listen on all addresses (0.0.0.0) for Codespaces compatibility
   },
 });

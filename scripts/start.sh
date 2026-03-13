@@ -1,5 +1,6 @@
 #!/bin/bash
-set -e
+# Don't use set -e here since we're running background processes
+# We want the script to continue even if one process has issues starting
 
 # Colors for output
 GREEN='\x1b[0;32m'
@@ -14,11 +15,12 @@ echo ""
 cleanup() {
   echo ""
   echo -e "$YELLOWShutting down servers...$NC"
-  kill 0
+  # Kill all background processes in this process group
+  kill 0 2>/dev/null || true
   exit 0
 }
 
-trap cleanup SIGINT SIGTERM
+trap cleanup SIGINT SIGTERM EXIT
 
 # Start Astro tutorial server in background
 echo -e "$BLUE[Tutorial]$NC Starting Astro server on port 1234..."

@@ -5,7 +5,7 @@
     3000,
     1234
   ],
-  "postCreateCommand": "npm install && cd learner-project && npm install && chmod +x scripts/start.sh",
+  "postCreateCommand": "npm install && (cd learner-project && npm install) && chmod +x scripts/start.sh",
   "customizations": {
     "vscode": {
       "extensions": [

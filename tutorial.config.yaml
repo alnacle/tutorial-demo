@@ -22,10 +22,19 @@ ports:
     protocol: http
     visibility: public
     description: Main application endpoint
+tutorialServer:
+  enabled: true
+  port: 1234
+  host: 0.0.0.0
+  installCommand: npm install
+  startCommand: npm run dev -- --host 0.0.0.0 --port 1234
+  autoInstall: true
+  autoStart: true
 devcontainer:
   enabled: true
   forwardPorts:
     - 3000
+    - 1234
   postCreateCommand: cd learner-project && npm install
 steps:
   naming: numeric-prefix
