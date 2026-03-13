@@ -17,7 +17,11 @@
     "vscode": {
       "extensions": [
         "astro-build.astro-vscode"
-      ]
+      ],
+      "settings": {
+        "workbench.startupEditor": "none",
+        "workbench.welcomePage.walkthroughs.openOnInstall": false
+      }
     }
   }
 }
