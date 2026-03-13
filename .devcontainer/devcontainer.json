@@ -9,16 +9,15 @@
     },
     "3000": {
       "label": "Learner App",
-      "onAutoForward": "ignore"
+      "onAutoForward": "ignore",
+      "visibility": "public"
     }
   },
   "postCreateCommand": "npm install && (cd learner-project && npm install) && chmod +x scripts/start.sh",
   "postStartCommand": "./scripts/start.sh",
   "customizations": {
     "vscode": {
-      "extensions": [
-        "astro-build.astro-vscode"
-      ],
+      "extensions": [],
       "settings": {
         "workbench.startupEditor": "none",
         "workbench.welcomePage.walkthroughs.openOnInstall": false
