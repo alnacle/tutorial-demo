@@ -8,7 +8,8 @@
       "onAutoForward": "openPreview"
     },
     "3000": {
-      "label": "Learner App"
+      "label": "Learner App",
+      "onAutoForward": "ignore"
     }
   },
   "postCreateCommand": "npm install && (cd learner-project && npm install) && chmod +x scripts/start.sh",
